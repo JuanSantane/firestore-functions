@@ -1,11 +1,25 @@
+// documentation and examples: http://www.protractortest.org/#/api
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
-  navigateTo() {
-    return browser.get('/');
-  }
-
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+abstract class Page {
+  navigateTo(route: string)  {
+    return browser.get(route);
   }
 }
+
+export class AppPage extends Page {
+
+  getParagraphText() {
+    return 'Welcome to app!';
+  }
+  getDefaultPageNotFound() {
+    return element(by.id('defaultMsg')).getText();
+  }
+}
+export class SignInPage extends Page {
+  getSignInBtn() {
+    return element(by.id('sign_in_btn'));
+  }
+}
+
+

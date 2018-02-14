@@ -15,27 +15,27 @@ export class UserService {
   private rootUrl = 'https://us-central1-devicemanager-6f072.cloudfunctions.net/deviceFn/';
   private userLogged: any;
   private token: any;
-  private SECRET_KEY_TOKEN = 'MyWonderApp :D';
+  // private SECRET_KEY_TOKEN = 'MyWonderApp :D';
   private TOKEN_KEY = 'DM_Authorization_token';
   newUserLogged = new Subject();
 
   constructor(private http: HttpClient) {
     const tokenStored = this.getStoredToken();
-  //   if (tokenStored) {
-  //     this.token = tokenStored;
-  //     const decoded = jwt.decode(tokenStored, this.SECRET_KEY_TOKEN);
-  //     if (decoded) {
-  //       console.log('loking for token for user with id ' + decoded.sub);
-  //       this.getUser(decoded.sub).subscribe((user: any) => {
-  //         this.userLogged = user;
-  //         this.newUserLogged.next(this.userLogged);
-  //       },
-  //     (error) => {console.log(error); },
-  //     () => { }
-  //   );
-  //   }
-  // }
-}
+    if (tokenStored) {
+      this.token = tokenStored;
+      const decoded: any = jwt.decode(this.token);
+      if (decoded) {
+        const uid = decoded.uid;
+        console.log('loking for token for user with id ' + uid);
+        this.getUser(uid).subscribe(
+          (user: any) => {
+            this.userLogged = user;
+            this.newUserLogged.next(this.userLogged);
+          },
+          (error) => {console.log(error); });
+      }
+    }
+  }
 
   public singup(user: User) {
     const headersValue =  new HttpHeaders().append('Content-Type', 'application/json');
@@ -69,7 +69,6 @@ export class UserService {
         return Observable.throw(err);
       });
   }
-
   public getUser(id: string) {
     return this.http.get(this.rootUrl + 'auth/' + id )
     .catch(err => {
