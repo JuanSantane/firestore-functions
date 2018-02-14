@@ -2,7 +2,7 @@
 
 const FireStore = require("../services/firestore.service");
 const Condition = require("../shared/condition");
-const Config = require("../../config");
+const Config = require("../config");
 const DEVICE_COLLECTION = Config.collections.devices;
 
 // CAMBIAR EL JSON.PARSE PARA ANGULAR
