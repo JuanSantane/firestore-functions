@@ -1,0 +1,25 @@
+
+<!--  Notifications Plugin    -->
+<script src="./js/bootstrap-notify.js"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="./js/demo.js"></script>
+
+<app-header></app-header>
+<div class="container"
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+  <div class="item item-1" fxFlex="10%">
+    <app-side-bar></app-side-bar>
+  </div>
+  <div class="item item-2" fxFlex="90%" >
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<button onclick="showNotification('bottom','right')" >Click me</button>
+
+
+
+
+
