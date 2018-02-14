@@ -21,20 +21,20 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     const tokenStored = this.getStoredToken();
-    if (tokenStored) {
-      this.token = tokenStored;
-      const decoded = jwt.decode(this.token, this.SECRET_KEY_TOKEN);
-      if (decoded) {
-        console.log('loking for token for user with id ' + decoded.sub);
-        this.getUser(decoded.sub).subscribe((user: any) => {
-          this.userLogged = user;
-          this.newUserLogged.next(this.userLogged);
-        },
-      (error) => {console.log(error); },
-      () => { }
-    );
-    }
-  }
+  //   if (tokenStored) {
+  //     this.token = tokenStored;
+  //     const decoded = jwt.decode(tokenStored, this.SECRET_KEY_TOKEN);
+  //     if (decoded) {
+  //       console.log('loking for token for user with id ' + decoded.sub);
+  //       this.getUser(decoded.sub).subscribe((user: any) => {
+  //         this.userLogged = user;
+  //         this.newUserLogged.next(this.userLogged);
+  //       },
+  //     (error) => {console.log(error); },
+  //     () => { }
+  //   );
+  //   }
+  // }
 }
 
   public singup(user: User) {

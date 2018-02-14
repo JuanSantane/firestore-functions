@@ -1,3 +1,5 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LineChartComponent } from './shared/charts/line-chart/line-chart.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -15,7 +18,6 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { UserService } from './services/device.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +26,17 @@ import { UserService } from './services/device.service';
     HomeComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+    DashboardComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ChartsModule
 
   ],
   providers: [UserService],

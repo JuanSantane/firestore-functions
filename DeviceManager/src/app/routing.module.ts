@@ -1,3 +1,4 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'devices', pathMatch: 'full' },
   { path: 'auth/signin', component: SigninComponent },
   { path: 'auth/signup', component: SignupComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'home', component: HomeComponent },
   { path: 'notFound', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'notFound' }
